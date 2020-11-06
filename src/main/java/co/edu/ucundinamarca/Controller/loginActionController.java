@@ -9,6 +9,7 @@ import co.edu.ucundinamarca.Pojo.Usuario;
 import co.edu.ucundinamarca.Services.LoginServices;
 import java.io.IOException;
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -19,35 +20,41 @@ import javax.faces.context.FacesContext;
  * @author Joseph
  */
 @Named(value = "loginActionController")
-@SessionScoped
-public class loginActionController implements Serializable{
+@RequestScoped
+public class loginActionController implements Serializable {
 
     private String username;
     private String password;
+
     /**
-     * 
+     *
      */
     /**
      * Creates a new instance of loginActionController
      */
     public loginActionController() {
+
+    }
+
+    public void Login() {
         LoginServices service = new LoginServices();
         Usuario user = service.login(username, password);
         FacesContext context = FacesContext.getCurrentInstance();
         if (user != null) {
-            context.addMessage(null,new FacesMessage("Exito","Bienvenido " + user.getUsername() + " " + user.getRol()));
-        }else{
-            context.addMessage(null,new FacesMessage("Error","Usuario o contraseña incorrectos "));
+            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getRol()));
+        } else {
+            context.addMessage(null, new FacesMessage("Error", "Usuario o contraseña incorrectos "));
         }
     }
 
-    public void Validate() throws IOException{
+    public void Validate() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("faces/loginAction2");
     }
-    
+
     /**
      * Obtener username
-     * @return 
+     *
+     * @return
      */
     public String getUsername() {
         return username;
@@ -55,7 +62,8 @@ public class loginActionController implements Serializable{
 
     /**
      * Asignar valor a variable username
-     * @param username 
+     *
+     * @param username
      */
     public void setUsername(String username) {
         this.username = username;
@@ -63,7 +71,8 @@ public class loginActionController implements Serializable{
 
     /**
      * Obtener contraseña
-     * @return 
+     *
+     * @return
      */
     public String getPassword() {
         return password;
@@ -71,10 +80,11 @@ public class loginActionController implements Serializable{
 
     /**
      * Asignar valor a variable password
-     * @param password 
+     *
+     * @param password
      */
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
