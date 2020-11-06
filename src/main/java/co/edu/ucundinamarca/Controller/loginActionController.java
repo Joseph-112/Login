@@ -37,13 +37,15 @@ public class loginActionController implements Serializable {
     }
 
     public void Login() {
+        System.out.println("Entro " + username + " " + password);
         LoginServices service = new LoginServices();
         Usuario user = service.login(username, password);
         FacesContext context = FacesContext.getCurrentInstance();
         if (user != null) {
-            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getRol()));
+            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getRol() + " " + user.getLastName()));
         } else {
-            context.addMessage(null, new FacesMessage("Error", "Usuario o contraseña incorrectos "));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario y Contraseña incorrecto"));
+
         }
     }
 

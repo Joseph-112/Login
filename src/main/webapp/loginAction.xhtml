@@ -16,22 +16,16 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form id="formulario">
-            <p:panel header="Validation">
-                <h:panelGrid columns="4" cellpadding="5" id="grid">
-                    <h:outputLabel for="username" value="Username: " />
-                    <p:inputText id="username" value="#{loginActionController.username}" required="true" label="Name"/>
-                    <p:message for="username" />
-                    <h:outputText value="#{loginActionController.username}" />
-
-                    <h:outputText value="Password: " />
-                    <p:password id="nonFeedback" value="#{loginActionController.password}" required="true"/>
-                    <p:message for="nonFeedback" />
-                    <p:commandButton value="Log in" action="#{loginActionController.Login()}" update="formulario" icon="pi pi-check" />
-                    <h:outputText id="display" value="#{loginActionController.password}" />
-                </h:panelGrid>
-            </p:panel>            
+            <p:panel>
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+                <h:outputText value ="Nombre: " />
+                <p:inputText value="#{loginActionController.username}"  /> 
+                <br></br>
+                <h:outputText value ="Password: " />
+                <p:inputText type="password" value = "#{loginActionController.password}" />
+                <p:commandButton action="#{loginActionController.Login()}"  value="Log In" update="formulario" ></p:commandButton>
+            </p:panel>
         </h:form>
-        
-        <div>TODO write content</div>
+
     </h:body>
 </html>
