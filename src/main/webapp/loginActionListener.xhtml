@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Login Action</title>
+        <title>Login ActionListener</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -22,12 +22,15 @@ and open the template in the editor.
                 <h:panelGrid columns="4" cellpadding="10">
 
                     <h:outputLabel for="username" value ="Nombre: " />
+                    <br></br>
                     <p:inputText id="username" value="#{loginActionListener.username}" required="true"/> 
                     <p:message for="username"/>   
                     <h:outputLabel for="password" value ="Password: " />
+                    <br></br>
                     <p:inputText id="password" type="password" value = "#{loginActionListener.password}" required="true"/>
-                    <p:message for="password"/>               
-                    <p:commandButton actionListener="#{loginActionListener.Login()}" value="Log In" update="formulario" ></p:commandButton>
+                    <p:message for="password"/>  
+                    <br></br>
+                    <p:commandButton actionListener="#{loginActionListener.Login}" value="Log In" update="formulario" ></p:commandButton>
 
                 </h:panelGrid>
             </p:panel>

@@ -12,33 +12,32 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author Joseph
  */
-@Named(value = "loginActionListener")
+@Named(value = "loginSubmitController")
 @RequestScoped
-public class LoginActionListener {
+public class LoginSubmitController {
 
     private String username;
     private String password;
 
     /**
-     * Creates a new instance of LoginActionListener
+     * Creates a new instance of LoginSubmitController
      */
-    public LoginActionListener() {
+    public LoginSubmitController() {
 
     }
 
-    public void Login(ActionEvent arg) {
+    public void Login() {
         System.out.println("Entro " + username + " " + password);
         LoginServices service = new LoginServices();
         Usuario user = service.login(username, password);
         FacesContext context = FacesContext.getCurrentInstance();
         if (user != null) {
-            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getRol() + " " + user.getLastName()));
+            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getLastName() + " " + user.getRol()));
         } else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario y Contraseña incorrecto"));
         }
@@ -83,5 +82,5 @@ public class LoginActionListener {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
