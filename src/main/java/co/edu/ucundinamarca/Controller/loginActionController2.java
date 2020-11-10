@@ -22,6 +22,7 @@ public class loginActionController2 implements Serializable {
 
     private String username;
     private String password;
+    
     @Inject
     private loginActionController controller;
     /**
