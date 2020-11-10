@@ -13,23 +13,71 @@ and open the template in the editor.
         <title>Login Submit</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+    <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background: #34495e;
+                font-family: sans-serif;
+            }
+            .dives{
+                margin: 0 auto;
+                border-radius: 25px;
+                border-color: #ffffff;
+                align-items: center;
+                padding: 40px;
+                position: absolute center;
+                margin-top: 8%;
+                background: #191919;
+                text-aling: center;
+            }
+            .dives input[type="text"],.dives input[type="password"]{
+                border:0;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                text-align: center;
+                border: 2px solid #3498db;
+                padding: 14px 10px;
+                width: 200px;
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transition: 0.25s;
+            }
+            .dives h1{
+                color: white;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+            .butt{
+                border:0;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                text-align: center;
+                border: 2px solid #2ecc71;
+                padding: 14px 40px;
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transition: 0.25s;
+                cursor: pointer;
+            }
+        </style>
     <h:body>
-        <h:form id="formulario">
-            <p:panel>
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <h:outputLabel for="username" value ="Nombre: " />
-                <br></br>
-                <p:inputText id="username" value="#{loginSubmitController.username}" required="true"/> 
-                <p:message for="username"/>                                
-                <br></br>
-                <h:outputLabel for="password" value ="Password: " />
-                <br></br>
-                <p:inputText id="password" type="password" value = "#{loginSubmitController.password}" required="true"/>
-                <p:message for="password"/>     
-                <br></br>
-                <p:commandButton type="submit" action="#{loginSubmitController.Login}" value="Log In" update="formulario" ></p:commandButton>
-            </p:panel>
-        </h:form>
-
+        <div class="dives">
+            <h1>Login Submit</h1>
+            <h:form id="formulario">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:inputText id="username" type="text" placeholder="UserName" value="#{loginSubmitController.username}" required="true"/> 
+                    <p:message for="username"/>                                
+                    <p:inputText id="password" type="password" placeholder="contraeña" value = "#{loginSubmitController.password}" required="true"/>
+                    <p:message for="password"/>     
+                    <br></br>
+                    <p:commandButton type="submit" class="butt" action="#{loginSubmitController.Login}" value="enviar" update="formulario" ></p:commandButton>
+            </h:form>
+        </div>    
     </h:body>
 </html>

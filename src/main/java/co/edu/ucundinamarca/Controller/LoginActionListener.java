@@ -38,7 +38,7 @@ public class LoginActionListener {
         Usuario user = service.login(username, password);
         FacesContext context = FacesContext.getCurrentInstance();
         if (user != null) {
-            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getRol() + " " + user.getLastName()));
+            context.addMessage(null, new FacesMessage("Exito", "Bienvenido " + user.getUsername() + " " + user.getLastName() + " " + user.getRol()));
         } else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario y Contraseña incorrecto"));
         }
