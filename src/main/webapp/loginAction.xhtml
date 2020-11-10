@@ -5,10 +5,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"      
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Login Action</title>
@@ -18,12 +17,13 @@ and open the template in the editor.
         <h:form id="formulario">
             <p:panel>
                 <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <h:outputText value ="Nombre: " />
-                <p:inputText value="#{loginActionController.username}"/> 
+                <h:outputLabel for="username" value ="Nombre: " />
+                <p:inputText id="username" value="#{loginActionController.username}" required="true"/> 
+                <p:message for="username"/>                                
                 <br></br>
-                <h:outputText value ="Password: " />
-                <p:inputText type="password" value = "#{loginActionController.password}" />
-               
+                <h:outputLabel for="password" value ="Password: " />
+                <p:inputText id="password" type="password" value = "#{loginActionController.password}" required="true"/>
+                <p:message for="password"/>               
                 <p:commandButton action="#{loginActionController.Login()}" value="Log In" update="formulario" ></p:commandButton>
             </p:panel>
         </h:form>
